@@ -6,7 +6,7 @@
 /*   By: sding <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 15:21:00 by sding             #+#    #+#             */
-/*   Updated: 2018/04/28 15:21:04 by sding            ###   ########.fr       */
+/*   Updated: 2018/04/28 16:14:53 by sding            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	print_int_sign(t_arg *arg)
 			arg->print_count++;
 		}
 	}
-	else if (arg->neg_arg_int)
+	if (arg->neg_arg_int)
 	{
 		write(1, "-", 1);
 		arg->print_count++;
