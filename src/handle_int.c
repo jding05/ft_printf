@@ -6,7 +6,7 @@
 /*   By: sding <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 22:52:58 by sding             #+#    #+#             */
-/*   Updated: 2018/04/18 22:52:59 by sding            ###   ########.fr       */
+/*   Updated: 2018/04/28 16:22:15 by sding            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void		int_output1(intmax_t nb, t_arg *arg, int arg_len)
 			print_padded_char(pad_zero_nb, arg, '0');
 		}
 	}
+	else if (pad_space_nb <= 0 && pad_zero_nb <= 0)
+		print_int_sign(arg);
 	ft_putnbr_intmax_t(nb);
 }
 
