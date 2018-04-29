@@ -6,7 +6,7 @@
 /*   By: sding <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 14:28:59 by sding             #+#    #+#             */
-/*   Updated: 2018/04/17 14:29:00 by sding            ###   ########.fr       */
+/*   Updated: 2018/04/28 16:59:04 by sding            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ char	*ft_printf_parse_prescision(char **format, t_arg *arg, va_list ap)
 		{
 			while (ft_isdigit(**format))
 				arg->precision_nb = arg->precision * 10 + (*(*format)++) - '0';
-				(*format)++;
 		}
 	}
 	return (*format);
