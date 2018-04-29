@@ -112,6 +112,7 @@ int		handle_octal(va_list ap, t_arg *arg)
 				print_padded_char(arg->width_nb, arg, ' ');
 			if (arg->flag_hash)
 				print_hex_flag_hash(arg);
+			free(oct_str);
 			return (arg->print_count);
 		}
 		oct_output1(oct_str, arg, arg_len);
@@ -121,5 +122,6 @@ int		handle_octal(va_list ap, t_arg *arg)
 	else if (arg->flag_zero == 1)
 		oct_output3(oct_str, arg, arg_len);
 	arg->print_count += arg_len;
+	free(oct_str);
 	return (arg->print_count);
 }

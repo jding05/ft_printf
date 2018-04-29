@@ -43,6 +43,16 @@ int			dptable_get_handler(char **format, va_list ap, t_arg *arg)
 		c == 'x' || c == 'X' || c == 'c' || c == 'C' || c == '%')
 		create_dispatch_table(handlers);
 	else
-		return (0);
+	{
+		c = **format;
+		if (c == '+' || c == '-' || c == '0' || c == ' ' || c == '#' ||
+			c == '.' || c == 'h' || c == 'l' || c == 'j' || c == 'z')
+			return (-1);
+		else
+		{
+			return (0);
+		}
+		// 	return (0);
+	}
 	return (handlers[(int)c](ap, arg));
 }

@@ -130,6 +130,7 @@ int			handle_hex(va_list ap, t_arg *arg)
 		{
 			if (arg->width_nb)
 				print_padded_char(arg->width_nb, arg, ' ');
+			free(hex_str);
 			return (arg->print_count);
 		}
 		hex_output1(hex_str, arg, arg_len);

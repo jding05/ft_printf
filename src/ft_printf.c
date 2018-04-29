@@ -31,9 +31,11 @@ int		solve_arg(char **format, va_list ap, t_arg *arg)
 		if ((ft_printf_parse_length(format, arg)) == NULL)
 			return (-1);
 		if ((nb_printout = dptable_get_handler(format, ap, arg)) >= 0)
+		{
+			// (*format)++;
 			break ;
+		}
 	}
-	// print_struct(arg);
 	return (nb_printout);
 }
 
@@ -59,7 +61,7 @@ int		ft_solve_format(char *format, va_list ap, size_t chars)
 	{
 		format++;
 		if ((arg_printout = solve_arg((char **)&format, ap, &arg)) == -1)
-			return (-1);
+			return (-1);	
 		else
 			return (ft_solve_format(format, ap, chars + arg_printout));
 	}
