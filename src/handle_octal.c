@@ -110,6 +110,8 @@ int		handle_octal(va_list ap, t_arg *arg)
 		{
 			if (arg->width_nb)
 				print_padded_char(arg->width_nb, arg, ' ');
+			if (arg->flag_hash)
+				print_hex_flag_hash(arg);
 			return (arg->print_count);
 		}
 		oct_output1(oct_str, arg, arg_len);

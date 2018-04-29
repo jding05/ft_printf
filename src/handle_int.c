@@ -61,13 +61,28 @@ int			handle_int(va_list ap, t_arg *arg)
 		arg->neg_arg_int = 1;
 	}
 	arg_len = ft_nbrlen(nb);
-	arg->print_count += arg_len;
 	if (arg->flag_minus == 0 && arg->flag_zero == 0)
+	{
+		if (arg->precision == 1 && arg->precision_nb == 0)
+		{
+			if (arg->width_nb)
+				print_padded_char(arg->width_nb, arg, ' ');
+			else if (nb == 0)
+				return (arg->print_count);
+			else if (nb != 0)
+			{
+				ft_putnbr_intmax_t(nb);
+				arg->print_count += arg_len;
+			}
+			return (arg->print_count);
+		}
 		int_output1(nb, arg, arg_len);
+	}
 	else if (arg->flag_minus == 1)
 		int_output2(nb, arg, arg_len);
 	else if (arg->flag_zero == 1)
 		int_output3(nb, arg, arg_len);
+	arg->print_count += arg_len;
 	return (arg->print_count);
 }
 
@@ -113,11 +128,11 @@ void		int_output2(intmax_t nb, t_arg *arg, int arg_len)
 		pad_space_nb = MAX(arg->width_nb - arg_len - 1, 0);
 	else
 		pad_space_nb = MAX(arg->width_nb - arg_len, 0);
-	pad_zero_nb = MAX(arg->width_nb - arg_len, 0);
+	pad_zero_nb = MAX(arg->precision_nb - arg_len, 0);
 	print_int_sign(arg);
-	print_padded_char(pad_zero_nb - pad_space_nb, arg, '0');
+	print_padded_char(pad_zero_nb, arg, '0');
 	ft_putnbr_intmax_t(nb);
-	print_padded_char(pad_space_nb, arg, ' ');
+	print_padded_char(pad_space_nb - pad_zero_nb, arg, ' ');
 }
 
 /*
@@ -134,7 +149,15 @@ void		int_output3(intmax_t nb, t_arg *arg, int arg_len)
 		print_int_sign(arg);
 	}
 	else
-		pad_zero_nb = MAX(arg->width_nb - arg_len, 0);
+	{
+		if (arg->flag_plus || arg->flag_space)
+		{
+			print_int_sign(arg);
+			pad_zero_nb = MAX(arg->width_nb - arg_len - 1, 0);
+		}
+		else
+			pad_zero_nb = MAX(arg->width_nb - arg_len, 0);
+	}
 	print_padded_char(pad_zero_nb, arg, '0');
 	ft_putnbr_intmax_t(nb);
 }
