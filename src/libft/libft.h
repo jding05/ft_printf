@@ -111,5 +111,6 @@ void				ft_putwstr(wchar_t *wstr);
 size_t				ft_wstrlen(wchar_t *wstr);
 void				ft_putnwstr(wchar_t *wstr, size_t n);
 char				*ft_itoa_base_uint(uintmax_t nb, uintmax_t base_nb, char c);
+void				ft_putnbr_uintmax_t(uintmax_t n);
 
 #endif

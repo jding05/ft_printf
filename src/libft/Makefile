@@ -100,7 +100,8 @@ ft_putwchar.c\
 ft_putwstr.c\
 ft_wstrlen.c\
 ft_putnwstr.c\
-ft_itoa_base_uint.c
+ft_itoa_base_uint.c\
+ft_putnbr_uintmax_t.c
 
 all: $(NAME)
 
