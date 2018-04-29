@@ -6,7 +6,7 @@
 /*   By: sding <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 14:28:59 by sding             #+#    #+#             */
-/*   Updated: 2018/04/28 18:29:59 by sding            ###   ########.fr       */
+/*   Updated: 2018/04/28 18:32:54 by sding            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ char	*ft_printf_parse_prescision(char **format, t_arg *arg, va_list ap)
 
 char	*ft_printf_parse_length(char **format, t_arg *arg)
 {
-	if (**format == 'h' && *(*format)++ == 'h')
+	if (**format == 'h' && *(*format + 1) == 'h')
 	{
 		arg->length = hh;
 		return (*format += 2);
 	}
-	else if (**format == 'l' && *(*format)++ == 'l')
+	else if (**format == 'l' && *(*format + 1) == 'l')
 	{
 		arg->length = ll;
 		return (*format += 2);
