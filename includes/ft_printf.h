@@ -6,7 +6,7 @@
 /*   By: sding <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 11:43:13 by sding             #+#    #+#             */
-/*   Updated: 2018/04/17 11:43:15 by sding            ###   ########.fr       */
+/*   Updated: 2018/04/28 17:53:41 by sding            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_arg
 	int			width_nb;
 	int			precision;
 	int			precision_nb;
-	enum		{h, hh, l, ll, j, z}	length;
+	enum		{null, h, hh, l, ll, j, z}	length;
 	char		conversion;
 	int			print_count;
 	int			neg_arg_int;
