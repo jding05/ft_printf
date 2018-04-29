@@ -79,7 +79,7 @@ void	print_int_sign(t_arg *arg)
 	}
 }
 
-void		print_padded_char(int padded_len, t_arg *arg, char c)
+void	print_padded_char(int padded_len, t_arg *arg, char c)
 {
 	int	i;
 

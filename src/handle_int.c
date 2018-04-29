@@ -54,8 +54,7 @@ int			handle_int(va_list ap, t_arg *arg)
 
 	if (arg->precision || arg->flag_minus)
 		arg->flag_zero = 0;
-	nb = get_int_type_by_length(ap, arg);
-	if (nb < 0)
+	if ((nb = get_int_type_by_length(ap, arg)) < 0)
 	{
 		nb = -nb;
 		arg->neg_arg_int = 1;
@@ -68,7 +67,7 @@ int			handle_int(va_list ap, t_arg *arg)
 			if (arg->width_nb)
 				print_padded_char(arg->width_nb, arg, ' ');
 			else if (nb == 0)
-				return (arg->print_count);
+				return (0);
 			else if (nb != 0)
 			{
 				ft_putnbr_intmax_t(nb);
