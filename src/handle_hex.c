@@ -80,7 +80,7 @@ void		hex_output2(char *hex_str, t_arg *arg, int arg_len)
 	}
 	else
 		pad_space_nb = MAX(arg->width_nb - arg_len, 0);
-	pad_zero_nb = MAX(arg->width_nb - arg_len, 0);
+	pad_zero_nb = MAX(arg->width_nb - arg_len - 2, 0);
 	print_padded_char(pad_zero_nb - pad_space_nb, arg, '0');
 	ft_putstr(hex_str);
 	print_padded_char(pad_space_nb, arg, ' ');
@@ -122,13 +122,23 @@ int			handle_hex(va_list ap, t_arg *arg)
 	nb = get_unsigned_type_by_length(ap, arg);
 	hex_str = ft_itoa_base_uint(nb, 16, arg->conversion);
 	arg_len = ft_strlen(hex_str);
-	arg->print_count += arg_len;
-	if (arg->flag_minus == 0)
+	if (nb == 0)
+		arg->flag_hash = 0;
+	if (arg->flag_minus == 0 && arg->flag_zero == 0)
+	{
+		if (arg->precision == 1 && arg->precision_nb == 0)
+		{
+			if (arg->width_nb)
+				print_padded_char(arg->width_nb, arg, ' ');
+			return (arg->print_count);
+		}
 		hex_output1(hex_str, arg, arg_len);
+	}
 	else if (arg->flag_minus == 1)
 		hex_output2(hex_str, arg, arg_len);
 	else if (arg->flag_zero == 1)
 		hex_output3(hex_str, arg, arg_len);
 	free(hex_str);
+	arg->print_count += arg_len;
 	return (arg->print_count);
 }

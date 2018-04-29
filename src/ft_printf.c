@@ -33,6 +33,7 @@ int		solve_arg(char **format, va_list ap, t_arg *arg)
 		if ((nb_printout = dptable_get_handler(format, ap, arg)) >= 0)
 			break ;
 	}
+	// print_struct(arg);
 	return (nb_printout);
 }
 

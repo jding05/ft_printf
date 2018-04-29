@@ -90,7 +90,7 @@ char	*ft_printf_parse_prescision(char **format, t_arg *arg, va_list ap)
 		else if (ft_isdigit(**format))
 		{
 			while (ft_isdigit(**format))
-				arg->precision_nb = arg->precision * 10 + (*(*format)++) - '0';
+				arg->precision_nb = arg->precision_nb * 10 + (*(*format)++) - '0';
 		}
 	}
 	return (*format);

@@ -47,6 +47,8 @@ void	str_output(va_list ap, t_arg *arg)
 		arg_str = "(null)";
 	arg_len = ft_strlen(arg_str);
 	min_print = MIN(arg->precision_nb, arg_len);
+	if (arg->precision == 0)
+		min_print = arg_len;
 	if ((arg->precision && arg->field_width == 0) || arg->width_nb < min_print)
 	{
 		arg->print_count = min_print;
@@ -57,11 +59,11 @@ void	str_output(va_list ap, t_arg *arg)
 		if (arg->flag_minus)
 		{
 			ft_putnstr(arg_str, min_print);
-			print_padded_char(arg->field_width - min_print, arg, ' ');
+			print_padded_char(arg->width_nb - min_print, arg, ' ');
 		}
 		else
 		{
-			print_padded_char(arg->field_width - min_print, arg, ' ');
+			print_padded_char(arg->width_nb - min_print, arg, ' ');
 			ft_putnstr(arg_str, min_print);
 		}
 		arg->print_count += min_print;

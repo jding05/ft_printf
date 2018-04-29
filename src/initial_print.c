@@ -59,7 +59,7 @@ void	print_struct(t_arg *arg)
 
 void	print_int_sign(t_arg *arg)
 {
-	if (arg->flag_plus || arg->flag_space)
+	if ((arg->flag_plus || arg->flag_space) && arg->neg_arg_int == 0)
 	{
 		if (arg->flag_plus)
 		{

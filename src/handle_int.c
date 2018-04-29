@@ -128,7 +128,13 @@ void		int_output3(intmax_t nb, t_arg *arg, int arg_len)
 {
 	intmax_t	pad_zero_nb;
 
-	pad_zero_nb = MAX(arg->width_nb - arg_len, 0);
+	if (arg->neg_arg_int)
+	{
+		pad_zero_nb = MAX(arg->width_nb - arg_len - 1, 0);
+		print_int_sign(arg);
+	}
+	else
+		pad_zero_nb = MAX(arg->width_nb - arg_len, 0);
 	print_padded_char(pad_zero_nb, arg, '0');
 	ft_putnbr_intmax_t(nb);
 }

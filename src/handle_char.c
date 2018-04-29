@@ -26,12 +26,11 @@
 int		handle_char(va_list ap, t_arg *arg)
 {
 	char	c;
-	int		print_len;
 
 	if (arg->length == l)
 	{
-		print_len = handle_wchar(ap, arg);
-		return (print_len);
+		arg->print_count = handle_wchar(ap, arg);
+		return (arg->print_count);
 	}
 	c = va_arg(ap, int);
 	if (arg->flag_minus)
