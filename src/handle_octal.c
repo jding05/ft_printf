@@ -114,6 +114,8 @@ int		handle_octal(va_list ap, t_arg *arg)
 			free(oct_str);
 			return (arg->print_count);
 		}
+		if (nb == 0 && arg->flag_hash == 1)
+			arg->flag_hash = 0;
 		oct_output1(oct_str, arg, arg_len);
 	}
 	else if (arg->flag_minus == 1)
