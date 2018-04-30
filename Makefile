@@ -32,6 +32,7 @@ CFILES =		src/dispatch_table.c\
 				src/handle_octal.c\
 				src/handle_unsigned.c\
 				src/handle_escape.c\
+				src/get_int_type.c
 
 #These options are here in case the lib needs to be recompiled.
 #LIBM, LIBC, LIBF will run rules re, clean and fclean inside the libft folder

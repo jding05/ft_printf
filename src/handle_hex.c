@@ -12,29 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-uintmax_t	get_unsigned_type_by_length(va_list ap, t_arg *arg)
-{
-	uintmax_t	nb;
-
-	nb = va_arg(ap, intmax_t);
-	if (arg->length == h && arg->conversion != 'U' && arg->conversion != 'O')
-		nb = (unsigned short int)nb;
-	else if (arg->length == l || arg->conversion == 'U' ||
-			arg->conversion == 'O')
-		nb = (unsigned long int)nb;
-	else if (arg->length == hh)
-		nb = (unsigned char)nb;
-	else if (arg->length == ll)
-		nb = (unsigned long long int)nb;
-	else if (arg->length == j)
-		nb = (uintmax_t)nb;
-	else if (arg->length == z)
-		nb = (size_t)nb;
-	else
-		nb = (unsigned int)nb;
-	return (nb);
-}
-
 void		hex_output1(char *hex_str, t_arg *arg, int arg_len)
 {
 	uintmax_t	pad_space_nb;
@@ -140,7 +117,7 @@ int			handle_hex(va_list ap, t_arg *arg)
 	return (arg->print_count + arg_len);
 }
 
-void	hex_helper(char *hex_str, t_arg *arg, int arg_len)
+void		hex_helper(char *hex_str, t_arg *arg, int arg_len)
 {
 	if (arg->flag_minus == 1)
 		hex_output2(hex_str, arg, arg_len);

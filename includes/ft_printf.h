@@ -17,7 +17,7 @@
 # include "../src/libft/libft.h"
 # define MAX(x, y) x > y ? x : y
 # define MIN(x, y) x < y ? x : y
-
+# define CHECK(x, y)if(x)return(y)
 /*
 ** colorize ANSI Colors
 */
@@ -166,6 +166,7 @@ void			oct_output1(char *oct_str, t_arg *arg, int arg_len);
 void			oct_output2(char *oct_str, t_arg *arg, int arg_len);
 void			oct_output3(char *oct_str, t_arg *arg, int arg_len);
 int				handle_octal(va_list ap, t_arg *arg);
+void			octal_helper(char *oct_str, t_arg *arg, int arg_len);
 
 /*
 ** handle_unsigned.c
@@ -182,4 +183,9 @@ int				handle_unsigned(va_list ap, t_arg *arg);
 
 int				handle_escape(va_list ap, t_arg *arg);
 
+/*
+** get_int_type.c
+*/
+
+uintmax_t		get_unsigned_type_by_length(va_list ap, t_arg *arg);
 #endif

@@ -26,10 +26,9 @@ void	oct_output1(char *oct_str, t_arg *arg, int arg_len)
 	uintmax_t	pad_space_nb;
 	uintmax_t	pad_zero_nb;
 
-	if (arg->flag_hash && (arg->conversion == 'o' || arg->conversion == 'O'))
+	pad_space_nb = MAX(arg->width_nb - arg_len, 0);
+	if (arg->flag_hash)
 		pad_space_nb = MAX(arg->width_nb - arg_len - 1, 0);
-	else
-		pad_space_nb = MAX(arg->width_nb - arg_len, 0);
 	pad_zero_nb = MAX(arg->precision_nb - arg_len, 0);
 	if (arg->flag_hash && (pad_zero_nb >= pad_space_nb))
 		print_hex_flag_hash(arg);
@@ -114,15 +113,20 @@ int		handle_octal(va_list ap, t_arg *arg)
 			free(oct_str);
 			return (arg->print_count);
 		}
-		if (nb == 0 && arg->flag_hash == 1)
-			arg->flag_hash = 0;
+		CHECK((nb == 0 && arg->flag_hash == 1), arg->flag_hash = 0);
+
 		oct_output1(oct_str, arg, arg_len);
 	}
-	else if (arg->flag_minus == 1)
+	else if (arg->flag_minus == 1 || arg->flag_zero == 1)
+		octal_helper(oct_str, arg, arg_len);
+	free(oct_str);
+	return (arg->print_count + arg_len);
+}
+
+void	octal_helper(char *oct_str, t_arg *arg, int arg_len)
+{
+	if (arg->flag_minus == 1)
 		oct_output2(oct_str, arg, arg_len);
 	else if (arg->flag_zero == 1)
 		oct_output3(oct_str, arg, arg_len);
-	arg->print_count += arg_len;
-	free(oct_str);
-	return (arg->print_count);
 }
