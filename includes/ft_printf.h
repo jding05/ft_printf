@@ -128,6 +128,8 @@ int				handle_wchar(va_list ap, t_arg *arg);
 
 int				handle_str(va_list ap, t_arg *arg);
 void			str_output(va_list ap, t_arg *arg);
+void			str_output_helper(t_arg *arg, char *arg_str, int min_print,
+															int arg_len);
 
 /*
 ** handle_wstr.c

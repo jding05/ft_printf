@@ -42,14 +42,17 @@ void	str_output(va_list ap, t_arg *arg)
 	char	*arg_str;
 	int		arg_len;
 
-	arg_str = va_arg(ap, char *);
-	if (arg_str == NULL)
+	if ((arg_str = va_arg(ap, char *)) == NULL)
 		arg_str = "(null)";
 	arg_len = ft_strlen(arg_str);
 	min_print = MIN(arg->precision_nb, arg_len);
-	if (arg->precision == 0)
-		min_print = arg_len;
+	(arg->precision == 0) ? min_print = arg_len : 1;
 	arg->print_count = min_print;
+	str_output_helper(arg, arg_str, min_print, arg_len);
+}
+
+void	str_output_helper(t_arg *arg, char *arg_str, int min_print, int arg_len)
+{
 	if ((arg->precision && arg->field_width == 0) || arg->width_nb < min_print)
 		ft_putnstr(arg_str, arg->print_count);
 	else if (arg->field_width == 1 || arg->width_nb > min_print)
