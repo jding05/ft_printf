@@ -6,7 +6,7 @@
 /*   By: sding <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 11:43:13 by sding             #+#    #+#             */
-/*   Updated: 2018/04/28 17:53:41 by sding            ###   ########.fr       */
+/*   Updated: 2018/04/29 23:00:39 by sding            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define MAX(x, y) x > y ? x : y
 # define MIN(x, y) x < y ? x : y
 # define CHECK(x, y)if(x)return(y)
+
 /*
 ** colorize ANSI Colors
 */
@@ -58,13 +59,13 @@ typedef struct	s_arg
 	int			width_nb;
 	int			precision;
 	int			precision_nb;
-	enum		{null, h, hh, l, ll, j, z}	length;
+	enum		{null, h, hh, l, ll, j, z} length;
 	char		conversion;
 	int			print_count;
 	int			neg_arg_int;
 }				t_arg;
 
-typedef	int		(*t_func)(va_list ap, t_arg *arg);
+typedef	int		(*t_func)(va_list, t_arg *);
 
 /*
 ** dispatch_table.c
