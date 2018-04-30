@@ -111,6 +111,8 @@ void			str_output(va_list ap, t_arg *arg);
 */
 
 int				handle_wstr(va_list ap, t_arg *arg);
+void			wstr_output(t_arg *arg, wchar_t *arg_wstr, int arg_len, 
+															int min_print);
 
 /*
 ** handle_hex.c

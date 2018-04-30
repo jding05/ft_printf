@@ -64,6 +64,8 @@ void	ptr_output1(char *address_str, t_arg *arg, int arg_len)
 			print_padded_char(pad_zero_nb, arg, '0');
 		}
 	}
+	else
+		print_hex_flag_hash(arg);
 	ft_putstr(address_str);
 }
 
