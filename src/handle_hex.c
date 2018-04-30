@@ -133,6 +133,8 @@ int			handle_hex(va_list ap, t_arg *arg)
 			free(hex_str);
 			return (arg->print_count);
 		}
+		if (nb == 0 && arg->flag_hash)
+			arg->flag_hash = 0;
 		hex_output1(hex_str, arg, arg_len);
 	}
 	else if (arg->flag_minus == 1)
