@@ -148,6 +148,7 @@ void			hex_output1(char *hex_str, t_arg *arg, int arg_len);
 void			hex_output2(char *hex_str, t_arg *arg, int arg_len);
 void			hex_output3(char *hex_str, t_arg *arg, int arg_len);
 int				handle_hex(va_list ap, t_arg *arg);
+void			hex_helper(char *hex_str, t_arg *arg, int arg_len);
 
 /*
 ** handle_ptr.c

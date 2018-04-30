@@ -134,10 +134,16 @@ int			handle_hex(va_list ap, t_arg *arg)
 		}
 		hex_output1(hex_str, arg, arg_len);
 	}
-	else if (arg->flag_minus == 1)
+	else if (arg->flag_minus == 1 || arg->flag_zero == 1)
+		hex_helper(hex_str, arg, arg_len);
+	free(hex_str);
+	return (arg->print_count + arg_len);
+}
+
+void	hex_helper(char *hex_str, t_arg *arg, int arg_len)
+{
+	if (arg->flag_minus == 1)
 		hex_output2(hex_str, arg, arg_len);
 	else if (arg->flag_zero == 1)
 		hex_output3(hex_str, arg, arg_len);
-	free(hex_str);
-	return (arg->print_count + arg_len);
 }
