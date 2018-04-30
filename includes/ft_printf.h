@@ -104,11 +104,11 @@ void			print_int_sign(t_arg *arg);
 ** handle_int.c
 */
 
-intmax_t		get_int_type_by_length(va_list ap, t_arg *arg);
 int				handle_int(va_list ap, t_arg *arg);
 void			int_output1(intmax_t nb, t_arg *arg, int arg_len);
 void			int_output2(intmax_t nb, t_arg *arg, int arg_len);
 void			int_output3(intmax_t nb, t_arg *arg, int arg_len);
+int				int_output_helper(t_arg *arg, intmax_t nb, int arg_len);
 
 /*
 ** handle_char.c
@@ -143,7 +143,6 @@ void			wstr_output(t_arg *arg, wchar_t *arg_wstr, int arg_len,
 ** handle_hex.c
 */
 
-uintmax_t		get_unsigned_type_by_length(va_list ap, t_arg *arg);
 char			*ft_itoa_base_uint(uintmax_t nb, uintmax_t base_nb, char c);
 void			print_hex_flag_hash(t_arg *arg);
 void			hex_output1(char *hex_str, t_arg *arg, int arg_len);
@@ -168,7 +167,7 @@ void			oct_output1(char *oct_str, t_arg *arg, int arg_len);
 void			oct_output2(char *oct_str, t_arg *arg, int arg_len);
 void			oct_output3(char *oct_str, t_arg *arg, int arg_len);
 int				handle_octal(va_list ap, t_arg *arg);
-void			octal_helper(char *oct_str, t_arg *arg, int arg_len);
+void			oct_output_helper(char *oct_str, t_arg *arg, int arg_len);
 
 /*
 ** handle_unsigned.c
@@ -190,4 +189,6 @@ int				handle_escape(va_list ap, t_arg *arg);
 */
 
 uintmax_t		get_unsigned_type_by_length(va_list ap, t_arg *arg);
+intmax_t		get_int_type_by_length(va_list ap, t_arg *arg);
+
 #endif

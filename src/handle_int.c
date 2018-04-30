@@ -12,28 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-intmax_t	get_int_type_by_length(va_list ap, t_arg *arg)
-{
-	intmax_t	nb;
-
-	nb = va_arg(ap, intmax_t);
-	if (arg->length == h && arg->conversion != 'D')
-		nb = (short int)nb;
-	else if (arg->length == l || arg->conversion == 'D')
-		nb = (long int)nb;
-	else if (arg->length == hh)
-		nb = (signed char)nb;
-	else if (arg->length == ll)
-		nb = (long long int)nb;
-	else if (arg->length == j)
-		nb = (intmax_t)nb;
-	else if (arg->length == z)
-		nb = (size_t)nb;
-	else
-		nb = (int)nb;
-	return (nb);
-}
-
 /*
 ** for type d and type i
 ** flag_hash: has no effect for d, i
@@ -60,6 +38,11 @@ int			handle_int(va_list ap, t_arg *arg)
 		arg->neg_arg_int = 1;
 	}
 	arg_len = ft_nbrlen(nb);
+	return (int_output_helper(arg, nb, arg_len));
+}
+
+int		int_output_helper(t_arg *arg, intmax_t nb, int arg_len)
+{
 	if (arg->flag_minus == 0 && arg->flag_zero == 0)
 	{
 		if (arg->precision == 1 && arg->precision_nb == 0)

@@ -117,12 +117,12 @@ int		handle_octal(va_list ap, t_arg *arg)
 		oct_output1(oct_str, arg, arg_len);
 	}
 	else if (arg->flag_minus == 1 || arg->flag_zero == 1)
-		octal_helper(oct_str, arg, arg_len);
+		oct_output_helper(oct_str, arg, arg_len);
 	free(oct_str);
 	return (arg->print_count + arg_len);
 }
 
-void	octal_helper(char *oct_str, t_arg *arg, int arg_len)
+void	oct_output_helper(char *oct_str, t_arg *arg, int arg_len)
 {
 	if (arg->flag_minus == 1)
 		oct_output2(oct_str, arg, arg_len);
