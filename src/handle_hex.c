@@ -119,11 +119,10 @@ int			handle_hex(va_list ap, t_arg *arg)
 
 	if (arg->precision || arg->flag_minus)
 		arg->flag_zero = 0;
-	nb = get_unsigned_type_by_length(ap, arg);
+	if ((nb = get_unsigned_type_by_length(ap, arg)) == 0)
+		arg->flag_hash = 0;
 	hex_str = ft_itoa_base_uint(nb, 16, arg->conversion);
 	arg_len = ft_strlen(hex_str);
-	if (nb == 0)
-		arg->flag_hash = 0;
 	if (arg->flag_minus == 0 && arg->flag_zero == 0)
 	{
 		if (arg->precision == 1 && arg->precision_nb == 0)
@@ -140,6 +139,5 @@ int			handle_hex(va_list ap, t_arg *arg)
 	else if (arg->flag_zero == 1)
 		hex_output3(hex_str, arg, arg_len);
 	free(hex_str);
-	arg->print_count += arg_len;
-	return (arg->print_count);
+	return (arg->print_count + arg_len);
 }
