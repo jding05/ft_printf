@@ -17,30 +17,6 @@
 # include "../src/libft/libft.h"
 # define MAX(x, y) x > y ? x : y
 # define MIN(x, y) x < y ? x : y
-# define CHECK(x, y)if(x)return(y)
-
-/*
-** colorize ANSI Colors
-*/
-
-# define BLACK		"\033[0;30m"
-# define BLUE		"\033[0;34m"
-# define CYAN		"\033[1;36m"
-# define DARKYELLOW	"\033[0;33m"
-# define GREEN		"\033[0;32m"
-# define GREY		"\033[1;30m"
-# define LAVENDER	"\033[1;35m"
-# define LIGHTBLUE	"\033[0;36m"
-# define LIGHTGREY	"\033[0;37m"
-# define LIME		"\033[1;32m"
-# define MAGENTA	"\033[0;35m"
-# define PINK		"\033[1;31m"
-# define PURPLE		"\033[1;34m"
-# define RED		"\033[0;31m"
-# define UNDERLINE	"\033[4m"
-# define WHITE		"\033[1;37m"
-# define YELLOW		"\033[1;33m"
-# define RESET		"\033[0m"
 
 /*
 ** things to store 1. flag, field-width, precision, length
@@ -59,13 +35,13 @@ typedef struct	s_arg
 	int			width_nb;
 	int			precision;
 	int			precision_nb;
-	enum		{h, hh, l, ll, j, z} length;
+	enum		{null, h, hh, l, ll, j, z} length;
 	char		conversion;
 	int			print_count;
 	int			neg_arg_int;
 }				t_arg;
 
-typedef	int		(*t_func)(va_list, t_arg *);
+typedef	int		(*t_func)(va_list ap, t_arg *arg);
 
 /*
 ** dispatch_table.c
@@ -191,5 +167,28 @@ int				handle_escape(va_list ap, t_arg *arg);
 
 uintmax_t		get_unsigned_type_by_length(va_list ap, t_arg *arg);
 intmax_t		get_int_type_by_length(va_list ap, t_arg *arg);
+
+/*
+** colorize ANSI Colors
+*/
+
+# define BLACK		"\033[0;30m"
+# define BLUE		"\033[0;34m"
+# define CYAN		"\033[1;36m"
+# define DARKYELLOW	"\033[0;33m"
+# define GREEN		"\033[0;32m"
+# define GREY		"\033[1;30m"
+# define LAVENDER	"\033[1;35m"
+# define LIGHTBLUE	"\033[0;36m"
+# define LIGHTGREY	"\033[0;37m"
+# define LIME		"\033[1;32m"
+# define MAGENTA	"\033[0;35m"
+# define PINK		"\033[1;31m"
+# define PURPLE		"\033[1;34m"
+# define RED		"\033[0;31m"
+# define UNDERLINE	"\033[4m"
+# define WHITE		"\033[1;37m"
+# define YELLOW		"\033[1;33m"
+# define RESET		"\033[0m"
 
 #endif
