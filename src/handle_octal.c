@@ -76,7 +76,6 @@ void	oct_output2(char *oct_str, t_arg *arg, int arg_len)
 		print_padded_char(pad_zero_nb, arg, '0');
 		ft_putstr(oct_str);
 		print_padded_char(pad_space_nb - pad_zero_nb, arg, ' ');
-		
 	}
 }
 
@@ -101,8 +100,7 @@ int		handle_octal(va_list ap, t_arg *arg)
 	char		*oct_str;
 	int			arg_len;
 
-	if ((nb = get_unsigned_type_by_length(ap, arg)) == 0)
-		arg->flag_hash = 0;
+	nb = get_unsigned_type_by_length(ap, arg);
 	oct_str = ft_itoa_base_uint(nb, 8, arg->conversion);
 	arg_len = ft_strlen(oct_str);
 	if (arg->flag_minus == 0 && arg->flag_zero == 0)

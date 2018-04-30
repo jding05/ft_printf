@@ -17,7 +17,7 @@ size_t	ft_wstrlen(wchar_t *wstr)
 	size_t	i;
 
 	i = 0;
-	while(wstr[i])
+	while (wstr[i])
 		i++;
 	return (i);
 }

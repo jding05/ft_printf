@@ -49,10 +49,7 @@ int			dptable_get_handler(char **format, va_list ap, t_arg *arg)
 			c == '.' || c == 'h' || c == 'l' || c == 'j' || c == 'z')
 			return (-1);
 		else
-		{
 			return (0);
-		}
-		// 	return (0);
 	}
 	return (handlers[(int)c](ap, arg));
 }
