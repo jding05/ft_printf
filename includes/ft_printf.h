@@ -41,7 +41,7 @@ typedef struct	s_arg
 	int			neg_arg_int;
 }				t_arg;
 
-typedef	int		(*t_func)(va_list ap, t_arg *arg);
+typedef	int		(*t_func)(va_list, t_arg *);
 
 /*
 ** dispatch_table.c
