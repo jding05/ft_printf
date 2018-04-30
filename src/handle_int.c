@@ -25,7 +25,7 @@
 ** if there is a percision, flag_zero = 0;
 */
 
-int			handle_int(va_list ap, t_arg *arg)
+int		handle_int(va_list ap, t_arg *arg)
 {
 	intmax_t	nb;
 	int			arg_len;
@@ -72,7 +72,7 @@ int		int_output_helper(t_arg *arg, intmax_t nb, int arg_len)
 ** when there is both field width and precison nb
 */
 
-void		int_output1(intmax_t nb, t_arg *arg, int arg_len)
+void	int_output1(intmax_t nb, t_arg *arg, int arg_len)
 {
 	intmax_t	pad_space_nb;
 	intmax_t	pad_zero_nb;
@@ -101,7 +101,7 @@ void		int_output1(intmax_t nb, t_arg *arg, int arg_len)
 	ft_putnbr_intmax_t(nb);
 }
 
-void		int_output2(intmax_t nb, t_arg *arg, int arg_len)
+void	int_output2(intmax_t nb, t_arg *arg, int arg_len)
 {
 	intmax_t	pad_space_nb;
 	intmax_t	pad_zero_nb;
@@ -121,7 +121,7 @@ void		int_output2(intmax_t nb, t_arg *arg, int arg_len)
 ** flag_zero == 1, presicion doesn't work
 */
 
-void		int_output3(intmax_t nb, t_arg *arg, int arg_len)
+void	int_output3(intmax_t nb, t_arg *arg, int arg_len)
 {
 	intmax_t	pad_zero_nb;
 

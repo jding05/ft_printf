@@ -59,7 +59,7 @@ typedef struct	s_arg
 	int			width_nb;
 	int			precision;
 	int			precision_nb;
-	enum		{null, h, hh, l, ll, j, z} length;
+	enum		{h, hh, l, ll, j, z} length;
 	char		conversion;
 	int			print_count;
 	int			neg_arg_int;
