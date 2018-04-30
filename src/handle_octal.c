@@ -101,7 +101,8 @@ int		handle_octal(va_list ap, t_arg *arg)
 	char		*oct_str;
 	int			arg_len;
 
-	nb = get_unsigned_type_by_length(ap, arg);
+	if ((nb = get_unsigned_type_by_length(ap, arg)) == 0)
+		arg->flag_hash = 0;
 	oct_str = ft_itoa_base_uint(nb, 8, arg->conversion);
 	arg_len = ft_strlen(oct_str);
 	if (arg->flag_minus == 0 && arg->flag_zero == 0)
